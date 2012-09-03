@@ -56,6 +56,7 @@
         barColor: "#fff",
         barHeight: 1,
         percentage: false,
+        message: false,
         deepSearch: true,
         completeAnimation: "fade",
         minimumTime: 500,
@@ -169,19 +170,17 @@
             position: "absolute",
             top: "50%"
         }).appendTo(qLoverlay);
-        if (qLoptions.percentage == true) {
-            qLpercentage = $("<div id='qLpercentage'></div>").text("0%").css({
-                height: "40px",
-                width: "100px",
-                position: "absolute",
-                fontSize: "3em",
+        if (qLoptions.message !== false || qLoptions.percentage == true) {
+            qLpercentage = $("<div id='qLpercentage'></div>").css({
                 top: "50%",
-                left: "50%",
                 marginTop: "-" + (59 + qLoptions.barHeight) + "px",
+                position: "absolute",
+                height: "40px",
+                width: "100%",
                 textAlign: "center",
-                marginLeft: "-50px",
+                fontSize: "3em",
                 color: qLoptions.barColor
-            }).appendTo(qLoverlay);
+            }).text( qLoptions.message ? qLoptions.message : "0%" ).appendTo(qLoverlay);
         }
     };
 
